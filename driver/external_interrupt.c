@@ -13,7 +13,7 @@ static ReturnType Exti_IsLineValid(Exti_Line_e LineNum_e);
 /*** VARIABLE ***********************************/
 
 /*** STATIC FUNCTION ****************************/
-static ReturnType Exti_IsLineValid(Exti_Line_e LineNum_e)
+static ReturnType Exti_CheckLineValid(Exti_Line_e LineNum_e)
 {
     ReturnType RetValue_b;
 
@@ -154,7 +154,7 @@ ReturnType Exti_ClearPending(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e)
     return RetValue_b;
 }
 
-ReturnType Exti_SoftIntGenarate(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e)
+ReturnType Exti_SoftIntGenerate(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e)
 {
     ReturnType RetValue_b;
     

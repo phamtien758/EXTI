@@ -42,7 +42,7 @@ typedef enum
 } Exti_Line_e;
 
 /*
- * @Gpio_EIMode_e
+ * @Exti_Edge_e
  *
  */
 typedef enum
@@ -59,7 +59,7 @@ ReturnType Exti_EventEnable(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e);
 ReturnType Exti_EventDisable(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e);
 ReturnType Exti_EdgeCfg(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e, \
                         Exti_Edge_e EdgeCfg_e);
-ReturnType Exti_SoftIntGenarate(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e);
+ReturnType Exti_SoftIntGenerate(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e);
 ReturnType Exti_ClearPending(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e);
 
 #endif /* EXTERNAL_INTERRUPT_H */
