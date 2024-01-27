@@ -52,14 +52,28 @@ typedef enum
 	EXTI_EDGE_FALLRISE  = 2,
 }Exti_Edge_e;
 
+/*
+ * @brief
+ */
+typedef void (*FuncHandler)(Exti_Line_e);
+
 /*** PROTOTYPE ****************************/
-ReturnType Exti_IntEnable(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e);
-ReturnType Exti_IntDisable(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e);
-ReturnType Exti_EventEnable(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e);
-ReturnType Exti_EventDisable(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e);
-ReturnType Exti_EdgeCfg(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e, \
-                        Exti_Edge_e EdgeCfg_e);
-ReturnType Exti_SoftIntGenerate(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e);
-ReturnType Exti_ClearPending(Exti_RegDef *p_Exti_st, Exti_Line_e LineNum_e);
+ReturnType Exti_IntEnable(Exti_Line_e LineNum_e, FuncHandler p_Func);
+ReturnType Exti_IntDisable(Exti_Line_e LineNum_e);
+ReturnType Exti_EventEnable(Exti_Line_e LineNum_e);
+ReturnType Exti_EventDisable(Exti_Line_e LineNum_e);
+ReturnType Exti_EdgeCfg(Exti_Line_e LineNum_e, Exti_Edge_e EdgeCfg_e);
+ReturnType Exti_SoftIntGenerate(Exti_Line_e LineNum_e);
+ReturnType Exti_ClearPending(Exti_Line_e LineNum_e);
+uint32_t   Exti_GetPending(void);
+
+/* Re-definition for External Handler line 0-15 */
+void EXTI0_IRQHandler(void);
+void EXTI1_IRQHandler(void);
+void EXTI2_IRQHandler(void);
+void EXTI3_IRQHandler(void);
+void EXTI4_IRQHandler(void);
+void EXTI9_5_IRQHandler(void);
+void EXTI15_10_IRQHandler(void);
 
 #endif /* EXTERNAL_INTERRUPT_H */
