@@ -8,7 +8,7 @@
 #include "external_interrupt.h"
 
 /*** PROTOTYPE **********************************/
-static ReturnType Exti_IsLineValid(Exti_Line_e LineNum_e);
+static ReturnType Exti_CheckLineValid(Exti_Line_e LineNum_e);
 
 /*** VARIABLE ***********************************/
 static Exti_RegDef *p_ExtiBase_st = EXTI;
@@ -22,11 +22,11 @@ static ReturnType Exti_CheckLineValid(Exti_Line_e LineNum_e)
     if(((EXTI_LINE0 <= LineNum_e) && (EXTI_LINE18 >= LineNum_e)) || \
        (EXTI_LINE21 == LineNum_e) || (EXTI_LINE22 == LineNum_e))
     {
-        RetValue = RET_NOT_OK;
+        RetValue = RET_OK;
     }
     else
     {
-        RetValue = RET_OK;
+        RetValue = RET_NOT_OK;
     }
 
     return RetValue;
@@ -37,7 +37,7 @@ ReturnType Exti_IntEnable(Exti_Line_e LineNum_e, FuncHandler p_Func)
 {
     ReturnType RetValue;
     
-    RetValue = Exti_IsLineValid(LineNum_e);
+    RetValue = Exti_CheckLineValid(LineNum_e);
 
     if(RET_OK == RetValue)
     {
@@ -56,7 +56,7 @@ ReturnType Exti_IntDisable(Exti_Line_e LineNum_e)
 {
     ReturnType RetValue;
     
-    RetValue = Exti_IsLineValid(LineNum_e);
+    RetValue = Exti_CheckLineValid(LineNum_e);
 
     if(RET_OK == RetValue)
     {
@@ -74,7 +74,7 @@ ReturnType Exti_EventEnable(Exti_Line_e LineNum_e)
 {
     ReturnType RetValue;
     
-    RetValue = Exti_IsLineValid(LineNum_e);
+    RetValue = Exti_CheckLineValid(LineNum_e);
 
     if(RET_OK == RetValue)
     {
@@ -92,7 +92,7 @@ ReturnType Exti_EventDisable(Exti_Line_e LineNum_e)
 {
     ReturnType RetValue;
     
-    RetValue = Exti_IsLineValid(LineNum_e);
+    RetValue = Exti_CheckLineValid(LineNum_e);
 
     if(RET_OK == RetValue)
     {
@@ -110,7 +110,7 @@ ReturnType Exti_EdgeCfg(Exti_Line_e LineNum_e, Exti_Edge_e EdgeCfg_e)
 {
     ReturnType RetValue;
     
-    RetValue = Exti_IsLineValid(LineNum_e);
+    RetValue = Exti_CheckLineValid(LineNum_e);
 
     if(RET_OK == RetValue)
     {
@@ -142,7 +142,7 @@ ReturnType Exti_ClearPending(Exti_Line_e LineNum_e)
 {
     ReturnType RetValue;
     
-    RetValue = Exti_IsLineValid(LineNum_e);
+    RetValue = Exti_CheckLineValid(LineNum_e);
 
     if(RET_OK == RetValue)
     {
@@ -160,7 +160,7 @@ ReturnType Exti_SoftIntGenerate(Exti_Line_e LineNum_e)
 {
     ReturnType RetValue;
     
-    RetValue = Exti_IsLineValid(LineNum_e);
+    RetValue = Exti_CheckLineValid(LineNum_e);
 
     if(RET_OK == RetValue)
     {
