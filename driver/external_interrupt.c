@@ -1,20 +1,62 @@
-/*
- * File: external_interrupt.c
- * Author: phamtien758
- * 
- */
+/*******************************************************************************
+ * File  : external_interrupt.c       
+ * Author: phamtien758      
+ * Brief : The external interrupt source file
+ ******************************************************************************/
 
-/*** INCLUDE ************************************/
+/*** INCLUDE ******************************************************************/
+
 #include "external_interrupt.h"
 
-/*** PROTOTYPE **********************************/
-static ReturnType Exti_CheckLineValid(Exti_Line_e LineNum_e);
+/*** DEFINE *******************************************************************/
 
-/*** VARIABLE ***********************************/
+/*** VARIABLE *****************************************************************/
+
+/*
+ * @brief  Contains the base address of EXTI
+ */
 static Exti_RegDef *p_ExtiBase_st = EXTI;
+
+/*
+ * @brief  Pointer to external interrupt handler
+ */
 static FuncHandler p_Handler = NULL;
 
+/*** PROTOTYPE **********************************/
+
+static ReturnType Exti_CheckLineValid(Exti_Line_e LineNum_e);
+
 /*** STATIC FUNCTION ****************************/
+
+/**
+  * @brief  Function checks the accuracy of Exti line. Wrong Exti line may cause
+  *         the microcontroller to operate incorrectly.
+  * @param  Exti_Line_e  Exti line number.
+  *                      This parameter can be one of following values:
+  *         @arg EXTI_LINE0
+  *         @arg EXTI_LINE1
+  *         @arg EXTI_LINE2
+  *         @arg EXTI_LINE3
+  *         @arg EXTI_LINE4
+  *         @arg EXTI_LINE5
+  *         @arg EXTI_LINE6
+  *         @arg EXTI_LINE7
+  *         @arg EXTI_LINE8
+  *         @arg EXTI_LINE9
+  *         @arg EXTI_LINE10
+  *         @arg EXTI_LINE11
+  *         @arg EXTI_LINE12
+  *         @arg EXTI_LINE13
+  *         @arg EXTI_LINE14
+  *         @arg EXTI_LINE15
+  *         @arg EXTI_LINE16
+  *         @arg EXTI_LINE17
+  *         @arg EXTI_LINE18
+  *         @arg EXTI_LINE21
+  *         @arg EXTI_LINE22
+  * @retval RET_OK - Exti line is valid
+  *         RET_NOT_OK - Exti line is invalid
+  */ 
 static ReturnType Exti_CheckLineValid(Exti_Line_e LineNum_e)
 {
     ReturnType RetValue;
@@ -33,6 +75,37 @@ static ReturnType Exti_CheckLineValid(Exti_Line_e LineNum_e)
 }
 
 /*** FUNCTIONS **********************************/
+
+/**
+  * @brief  Enable external interrupt
+  * @note   None
+  * @param  Exti_Line_e  Exti line number.
+  *                      This parameter can be one of following values:
+  *         @arg EXTI_LINE0
+  *         @arg EXTI_LINE1
+  *         @arg EXTI_LINE2
+  *         @arg EXTI_LINE3
+  *         @arg EXTI_LINE4
+  *         @arg EXTI_LINE5
+  *         @arg EXTI_LINE6
+  *         @arg EXTI_LINE7
+  *         @arg EXTI_LINE8
+  *         @arg EXTI_LINE9
+  *         @arg EXTI_LINE10
+  *         @arg EXTI_LINE11
+  *         @arg EXTI_LINE12
+  *         @arg EXTI_LINE13
+  *         @arg EXTI_LINE14
+  *         @arg EXTI_LINE15
+  *         @arg EXTI_LINE16
+  *         @arg EXTI_LINE17
+  *         @arg EXTI_LINE18
+  *         @arg EXTI_LINE21
+  *         @arg EXTI_LINE22
+  * @param  p_Func       User's handler function
+  * @retval RET_OK - Enable successfully
+  *         RET_NOT_OK - Enable unsuccessfully
+  */ 
 ReturnType Exti_IntEnable(Exti_Line_e LineNum_e, FuncHandler p_Func)
 {
     ReturnType RetValue;
@@ -52,6 +125,35 @@ ReturnType Exti_IntEnable(Exti_Line_e LineNum_e, FuncHandler p_Func)
     return RetValue;
 }
 
+/**
+  * @brief  Disable external interrupt
+  * @note   None
+  * @param  Exti_Line_e  Exti line number.
+  *                      This parameter can be one of following values:
+  *         @arg EXTI_LINE0
+  *         @arg EXTI_LINE1
+  *         @arg EXTI_LINE2
+  *         @arg EXTI_LINE3
+  *         @arg EXTI_LINE4
+  *         @arg EXTI_LINE5
+  *         @arg EXTI_LINE6
+  *         @arg EXTI_LINE7
+  *         @arg EXTI_LINE8
+  *         @arg EXTI_LINE9
+  *         @arg EXTI_LINE10
+  *         @arg EXTI_LINE11
+  *         @arg EXTI_LINE12
+  *         @arg EXTI_LINE13
+  *         @arg EXTI_LINE14
+  *         @arg EXTI_LINE15
+  *         @arg EXTI_LINE16
+  *         @arg EXTI_LINE17
+  *         @arg EXTI_LINE18
+  *         @arg EXTI_LINE21
+  *         @arg EXTI_LINE22
+  * @retval RET_OK - Disable successfully
+  *         RET_NOT_OK - Disable unsuccessfully
+  */ 
 ReturnType Exti_IntDisable(Exti_Line_e LineNum_e)
 {
     ReturnType RetValue;
@@ -70,6 +172,35 @@ ReturnType Exti_IntDisable(Exti_Line_e LineNum_e)
     return RetValue;
 }
 
+/**
+  * @brief  Enable event
+  * @note   None
+  * @param  Exti_Line_e  Exti line number.
+  *                      This parameter can be one of following values:
+  *         @arg EXTI_LINE0
+  *         @arg EXTI_LINE1
+  *         @arg EXTI_LINE2
+  *         @arg EXTI_LINE3
+  *         @arg EXTI_LINE4
+  *         @arg EXTI_LINE5
+  *         @arg EXTI_LINE6
+  *         @arg EXTI_LINE7
+  *         @arg EXTI_LINE8
+  *         @arg EXTI_LINE9
+  *         @arg EXTI_LINE10
+  *         @arg EXTI_LINE11
+  *         @arg EXTI_LINE12
+  *         @arg EXTI_LINE13
+  *         @arg EXTI_LINE14
+  *         @arg EXTI_LINE15
+  *         @arg EXTI_LINE16
+  *         @arg EXTI_LINE17
+  *         @arg EXTI_LINE18
+  *         @arg EXTI_LINE21
+  *         @arg EXTI_LINE22
+  * @retval RET_OK - Enable successfully
+  *         RET_NOT_OK - Enable unsuccessfully
+  */ 
 ReturnType Exti_EventEnable(Exti_Line_e LineNum_e)
 {
     ReturnType RetValue;
@@ -88,6 +219,35 @@ ReturnType Exti_EventEnable(Exti_Line_e LineNum_e)
     return RetValue;
 }
 
+/**
+  * @brief  Disable event
+  * @note   None
+  * @param  Exti_Line_e  Exti line number.
+  *                      This parameter can be one of following values:
+  *         @arg EXTI_LINE0
+  *         @arg EXTI_LINE1
+  *         @arg EXTI_LINE2
+  *         @arg EXTI_LINE3
+  *         @arg EXTI_LINE4
+  *         @arg EXTI_LINE5
+  *         @arg EXTI_LINE6
+  *         @arg EXTI_LINE7
+  *         @arg EXTI_LINE8
+  *         @arg EXTI_LINE9
+  *         @arg EXTI_LINE10
+  *         @arg EXTI_LINE11
+  *         @arg EXTI_LINE12
+  *         @arg EXTI_LINE13
+  *         @arg EXTI_LINE14
+  *         @arg EXTI_LINE15
+  *         @arg EXTI_LINE16
+  *         @arg EXTI_LINE17
+  *         @arg EXTI_LINE18
+  *         @arg EXTI_LINE21
+  *         @arg EXTI_LINE22
+  * @retval RET_OK - Disable successfully
+  *         RET_NOT_OK - Disable unsuccessfully
+  */ 
 ReturnType Exti_EventDisable(Exti_Line_e LineNum_e)
 {
     ReturnType RetValue;
@@ -106,6 +266,40 @@ ReturnType Exti_EventDisable(Exti_Line_e LineNum_e)
     return RetValue;
 }
 
+/**
+  * @brief  Edge trigger config
+  * @note   None
+  * @param  Exti_Line_e  Exti line number.
+  *                      This parameter can be one of following values:
+  *         @arg EXTI_LINE0
+  *         @arg EXTI_LINE1
+  *         @arg EXTI_LINE2
+  *         @arg EXTI_LINE3
+  *         @arg EXTI_LINE4
+  *         @arg EXTI_LINE5
+  *         @arg EXTI_LINE6
+  *         @arg EXTI_LINE7
+  *         @arg EXTI_LINE8
+  *         @arg EXTI_LINE9
+  *         @arg EXTI_LINE10
+  *         @arg EXTI_LINE11
+  *         @arg EXTI_LINE12
+  *         @arg EXTI_LINE13
+  *         @arg EXTI_LINE14
+  *         @arg EXTI_LINE15
+  *         @arg EXTI_LINE16
+  *         @arg EXTI_LINE17
+  *         @arg EXTI_LINE18
+  *         @arg EXTI_LINE21
+  *         @arg EXTI_LINE22
+  * @param  EdgeCfg_e   Edge trigger.
+  *                     This parameter can be one of following values:
+  *         @arg EXTI_EDGE_FALL - 
+  *         @arg EXTI_EDGE_RISE
+  *         @arg EXTI_EDGE_FALLRISE
+  * @retval RET_OK - Enable successfully
+  *         RET_NOT_OK - Enable unsuccessfully
+  */ 
 ReturnType Exti_EdgeCfg(Exti_Line_e LineNum_e, Exti_Edge_e EdgeCfg_e)
 {
     ReturnType RetValue;
