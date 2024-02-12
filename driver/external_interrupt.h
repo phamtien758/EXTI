@@ -1,73 +1,91 @@
-/*
- * File: external_interrupt.h
- * Author: phamtien758
- * 
- */
+/*******************************************************************************
+ * File  : external_interrupt.h    
+ * Author: phamtien758      
+ * Brief : The external interrupt header file
+ ******************************************************************************/
 
 #ifndef EXTERNAL_INTERRUPT_H
 #define EXTERNAL_INTERRUPT_H
 
 /*** INCLUDE ************************************/
+
 #include "stm32f401re.h"
 
 /*** DEFINE ************************************/
 
 /*** TYPEDEF ************************************/
 /*
- * @Exti_Line_e
+ * @Exti_Line_def
+ * @brief Exti line number
  */
 typedef enum
 {
-    EXTI_LINE0  = 0U,
-    EXTI_LINE1  = 1U,
-    EXTI_LINE2  = 2U,
-    EXTI_LINE3  = 3U,
-    EXTI_LINE4  = 4U,
-    EXTI_LINE5  = 5U,
-    EXTI_LINE6  = 6U,
-    EXTI_LINE7  = 7U,
-    EXTI_LINE8  = 8U,
-    EXTI_LINE9  = 9U,
-    EXTI_LINE10 = 10U,
-    EXTI_LINE11 = 11U,
-    EXTI_LINE12 = 12U,
-    EXTI_LINE13 = 13U,
-    EXTI_LINE14 = 14U,
-    EXTI_LINE15 = 15U,
-    EXTI_LINE16 = 16U,
-    EXTI_LINE17 = 17U,
-    EXTI_LINE18 = 18U,
-    EXTI_LINE21 = 21U,
-    EXTI_LINE22 = 22U
-} Exti_Line_e;
+    EXTI_LINE0  = 0U,     /* Exti line 0 */
+    EXTI_LINE1  = 1U,     /* Exti line 1 */
+    EXTI_LINE2  = 2U,     /* Exti line 2 */
+    EXTI_LINE3  = 3U,     /* Exti line 3 */
+    EXTI_LINE4  = 4U,     /* Exti line 4 */
+    EXTI_LINE5  = 5U,     /* Exti line 5 */
+    EXTI_LINE6  = 6U,     /* Exti line 6 */
+    EXTI_LINE7  = 7U,     /* Exti line 7 */
+    EXTI_LINE8  = 8U,     /* Exti line 8 */
+    EXTI_LINE9  = 9U,     /* Exti line 9 */
+    EXTI_LINE10 = 10U,    /* Exti line 10 */
+    EXTI_LINE11 = 11U,    /* Exti line 11 */
+    EXTI_LINE12 = 12U,    /* Exti line 12 */
+    EXTI_LINE13 = 13U,    /* Exti line 13 */
+    EXTI_LINE14 = 14U,    /* Exti line 14 */
+    EXTI_LINE15 = 15U,    /* Exti line 15 */
+    EXTI_LINE16 = 16U,    /* Exti line 16 */
+    EXTI_LINE17 = 17U,    /* Exti line 17 */
+    EXTI_LINE18 = 18U,    /* Exti line 18 */
+    EXTI_LINE21 = 21U,    /* Exti line 21 */
+    EXTI_LINE22 = 22U     /* Exti line 22 */
+} Exti_Line;
 
 /*
- * @Exti_Edge_e
- *
+ * @Exti_Edge_def
+ * @brief External interrupt edge triggers
  */
 typedef enum
 {
-	EXTI_EDGE_FALL      = 0,
-	EXTI_EDGE_RISE      = 1,
-	EXTI_EDGE_FALLRISE  = 2,
-}Exti_Edge_e;
+	EXTI_EDGE_FALL      = 0,    /* Falling edge */
+	EXTI_EDGE_RISE      = 1,    /* Rising edge */
+	EXTI_EDGE_FALLRISE  = 2,    /* Both falling and rising edge */
+}Exti_Edge;
 
 /*
- * @brief
+ * @brief Pointer to user's handler function
  */
-typedef void (*FuncHandler)(Exti_Line_e);
+typedef void (*FuncHandler)(Exti_Line);
 
 /*** PROTOTYPE ****************************/
-ReturnType Exti_IntEnable(Exti_Line_e LineNum_e, FuncHandler p_Func);
-ReturnType Exti_IntDisable(Exti_Line_e LineNum_e);
-ReturnType Exti_EventEnable(Exti_Line_e LineNum_e);
-ReturnType Exti_EventDisable(Exti_Line_e LineNum_e);
-ReturnType Exti_EdgeCfg(Exti_Line_e LineNum_e, Exti_Edge_e EdgeCfg_e);
-ReturnType Exti_SoftIntGenerate(Exti_Line_e LineNum_e);
-ReturnType Exti_ClearPending(Exti_Line_e LineNum_e);
+
+/* Enable external interrupt */
+ReturnType Exti_IntEnable(Exti_Line LineNum_e, FuncHandler p_Func);
+
+/* Disable external interrupt */
+ReturnType Exti_IntDisable(Exti_Line LineNum_e);
+
+/* Enable event */
+ReturnType Exti_EventEnable(Exti_Line LineNum_e);
+
+/* Disable event */
+ReturnType Exti_EventDisable(Exti_Line LineNum_e);
+
+/* Select trigger edges */
+ReturnType Exti_EdgeCfg(Exti_Line LineNum_e, Exti_Edge EdgeCfg_e);
+
+/* Generate interrupt/event by software */
+ReturnType Exti_SoftIntGenerate(Exti_Line LineNum_e);
+
+/* Clear pending status */
+ReturnType Exti_ClearPending(Exti_Line LineNum_e);
+
+/* Return pending value of external interrupts */
 uint32_t   Exti_GetPending(void);
 
-/* Re-definition for External Handler line 0-15 */
+/* Override weak Exti line handlers (0-15) */
 void EXTI0_IRQHandler(void);
 void EXTI1_IRQHandler(void);
 void EXTI2_IRQHandler(void);

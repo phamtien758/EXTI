@@ -24,14 +24,14 @@ static FuncHandler p_Handler = NULL;
 
 /*** PROTOTYPE **********************************/
 
-static ReturnType Exti_CheckLineValid(Exti_Line_e LineNum_e);
+static ReturnType Exti_CheckLineValid(Exti_Line LineNum_e);
 
 /*** STATIC FUNCTION ****************************/
 
 /**
   * @brief  Function checks the accuracy of Exti line. Wrong Exti line may cause
   *         the microcontroller to operate incorrectly.
-  * @param  Exti_Line_e  Exti line number.
+  * @param  Exti_Line  Exti line number.
   *                      This parameter can be one of following values:
   *         @arg EXTI_LINE0
   *         @arg EXTI_LINE1
@@ -57,7 +57,7 @@ static ReturnType Exti_CheckLineValid(Exti_Line_e LineNum_e);
   * @retval RET_OK - Exti line is valid
   *         RET_NOT_OK - Exti line is invalid
   */ 
-static ReturnType Exti_CheckLineValid(Exti_Line_e LineNum_e)
+static ReturnType Exti_CheckLineValid(Exti_Line LineNum_e)
 {
     ReturnType RetValue;
 
@@ -79,7 +79,7 @@ static ReturnType Exti_CheckLineValid(Exti_Line_e LineNum_e)
 /**
   * @brief  Enable external interrupt
   * @note   None
-  * @param  Exti_Line_e  Exti line number.
+  * @param  Exti_Line  Exti line number.
   *                      This parameter can be one of following values:
   *         @arg EXTI_LINE0
   *         @arg EXTI_LINE1
@@ -103,10 +103,10 @@ static ReturnType Exti_CheckLineValid(Exti_Line_e LineNum_e)
   *         @arg EXTI_LINE21
   *         @arg EXTI_LINE22
   * @param  p_Func       User's handler function
-  * @retval RET_OK - Enable successfully
-  *         RET_NOT_OK - Enable unsuccessfully
-  */ 
-ReturnType Exti_IntEnable(Exti_Line_e LineNum_e, FuncHandler p_Func)
+  * @retval RET_OK - Enable successful
+  *         RET_NOT_OK - Enable unsuccessful
+  */
+ReturnType Exti_IntEnable(Exti_Line LineNum_e, FuncHandler p_Func)
 {
     ReturnType RetValue;
     
@@ -128,7 +128,7 @@ ReturnType Exti_IntEnable(Exti_Line_e LineNum_e, FuncHandler p_Func)
 /**
   * @brief  Disable external interrupt
   * @note   None
-  * @param  Exti_Line_e  Exti line number.
+  * @param  Exti_Line  Exti line number.
   *                      This parameter can be one of following values:
   *         @arg EXTI_LINE0
   *         @arg EXTI_LINE1
@@ -151,10 +151,10 @@ ReturnType Exti_IntEnable(Exti_Line_e LineNum_e, FuncHandler p_Func)
   *         @arg EXTI_LINE18
   *         @arg EXTI_LINE21
   *         @arg EXTI_LINE22
-  * @retval RET_OK - Disable successfully
-  *         RET_NOT_OK - Disable unsuccessfully
+  * @retval RET_OK - Disable successful
+  *         RET_NOT_OK - Disable unsuccessful
   */ 
-ReturnType Exti_IntDisable(Exti_Line_e LineNum_e)
+ReturnType Exti_IntDisable(Exti_Line LineNum_e)
 {
     ReturnType RetValue;
     
@@ -175,7 +175,7 @@ ReturnType Exti_IntDisable(Exti_Line_e LineNum_e)
 /**
   * @brief  Enable event
   * @note   None
-  * @param  Exti_Line_e  Exti line number.
+  * @param  Exti_Line  Exti line number.
   *                      This parameter can be one of following values:
   *         @arg EXTI_LINE0
   *         @arg EXTI_LINE1
@@ -198,10 +198,10 @@ ReturnType Exti_IntDisable(Exti_Line_e LineNum_e)
   *         @arg EXTI_LINE18
   *         @arg EXTI_LINE21
   *         @arg EXTI_LINE22
-  * @retval RET_OK - Enable successfully
-  *         RET_NOT_OK - Enable unsuccessfully
+  * @retval RET_OK - Enable successful
+  *         RET_NOT_OK - Enable unsuccessful
   */ 
-ReturnType Exti_EventEnable(Exti_Line_e LineNum_e)
+ReturnType Exti_EventEnable(Exti_Line LineNum_e)
 {
     ReturnType RetValue;
     
@@ -222,7 +222,7 @@ ReturnType Exti_EventEnable(Exti_Line_e LineNum_e)
 /**
   * @brief  Disable event
   * @note   None
-  * @param  Exti_Line_e  Exti line number.
+  * @param  Exti_Line  Exti line number.
   *                      This parameter can be one of following values:
   *         @arg EXTI_LINE0
   *         @arg EXTI_LINE1
@@ -245,10 +245,10 @@ ReturnType Exti_EventEnable(Exti_Line_e LineNum_e)
   *         @arg EXTI_LINE18
   *         @arg EXTI_LINE21
   *         @arg EXTI_LINE22
-  * @retval RET_OK - Disable successfully
-  *         RET_NOT_OK - Disable unsuccessfully
+  * @retval RET_OK - Disable successful
+  *         RET_NOT_OK - Disable unsuccessful
   */ 
-ReturnType Exti_EventDisable(Exti_Line_e LineNum_e)
+ReturnType Exti_EventDisable(Exti_Line LineNum_e)
 {
     ReturnType RetValue;
     
@@ -269,7 +269,7 @@ ReturnType Exti_EventDisable(Exti_Line_e LineNum_e)
 /**
   * @brief  Edge trigger config
   * @note   None
-  * @param  Exti_Line_e  Exti line number.
+  * @param  Exti_Line  Exti line number.
   *                      This parameter can be one of following values:
   *         @arg EXTI_LINE0
   *         @arg EXTI_LINE1
@@ -297,10 +297,10 @@ ReturnType Exti_EventDisable(Exti_Line_e LineNum_e)
   *         @arg EXTI_EDGE_FALL - 
   *         @arg EXTI_EDGE_RISE
   *         @arg EXTI_EDGE_FALLRISE
-  * @retval RET_OK - Enable successfully
-  *         RET_NOT_OK - Enable unsuccessfully
+  * @retval RET_OK - Enable successful
+  *         RET_NOT_OK - Enable unsuccessful
   */ 
-ReturnType Exti_EdgeCfg(Exti_Line_e LineNum_e, Exti_Edge_e EdgeCfg_e)
+ReturnType Exti_EdgeCfg(Exti_Line LineNum_e, Exti_Edge EdgeCfg_e)
 {
     ReturnType RetValue;
     
@@ -332,7 +332,36 @@ ReturnType Exti_EdgeCfg(Exti_Line_e LineNum_e, Exti_Edge_e EdgeCfg_e)
     return RetValue;
 }
 
-ReturnType Exti_ClearPending(Exti_Line_e LineNum_e)
+/**
+  * @brief  Clear pending bit
+  * @note   None
+  * @param  Exti_Line  Exti line number.
+  *                      This parameter can be one of following values:
+  *         @arg EXTI_LINE0
+  *         @arg EXTI_LINE1
+  *         @arg EXTI_LINE2
+  *         @arg EXTI_LINE3
+  *         @arg EXTI_LINE4
+  *         @arg EXTI_LINE5
+  *         @arg EXTI_LINE6
+  *         @arg EXTI_LINE7
+  *         @arg EXTI_LINE8
+  *         @arg EXTI_LINE9
+  *         @arg EXTI_LINE10
+  *         @arg EXTI_LINE11
+  *         @arg EXTI_LINE12
+  *         @arg EXTI_LINE13
+  *         @arg EXTI_LINE14
+  *         @arg EXTI_LINE15
+  *         @arg EXTI_LINE16
+  *         @arg EXTI_LINE17
+  *         @arg EXTI_LINE18
+  *         @arg EXTI_LINE21
+  *         @arg EXTI_LINE22
+  * @retval RET_OK - Clear successful
+  *         RET_NOT_OK - Clear unsuccessful
+  */
+ReturnType Exti_ClearPending(Exti_Line LineNum_e)
 {
     ReturnType RetValue;
     
@@ -350,7 +379,36 @@ ReturnType Exti_ClearPending(Exti_Line_e LineNum_e)
     return RetValue;
 }
 
-ReturnType Exti_SoftIntGenerate(Exti_Line_e LineNum_e)
+/**
+  * @brief  Generate interrupt/event by software
+  * @note   None
+  * @param  Exti_Line  Exti line number.
+  *                      This parameter can be one of following values:
+  *         @arg EXTI_LINE0
+  *         @arg EXTI_LINE1
+  *         @arg EXTI_LINE2
+  *         @arg EXTI_LINE3
+  *         @arg EXTI_LINE4
+  *         @arg EXTI_LINE5
+  *         @arg EXTI_LINE6
+  *         @arg EXTI_LINE7
+  *         @arg EXTI_LINE8
+  *         @arg EXTI_LINE9
+  *         @arg EXTI_LINE10
+  *         @arg EXTI_LINE11
+  *         @arg EXTI_LINE12
+  *         @arg EXTI_LINE13
+  *         @arg EXTI_LINE14
+  *         @arg EXTI_LINE15
+  *         @arg EXTI_LINE16
+  *         @arg EXTI_LINE17
+  *         @arg EXTI_LINE18
+  *         @arg EXTI_LINE21
+  *         @arg EXTI_LINE22
+  * @retval RET_OK - Generate successful
+  *         RET_NOT_OK - Generate unsuccessful
+  */
+ReturnType Exti_SoftIntGenerate(Exti_Line LineNum_e)
 {
     ReturnType RetValue;
     
@@ -368,11 +426,20 @@ ReturnType Exti_SoftIntGenerate(Exti_Line_e LineNum_e)
     return RetValue;
 }
 
+/**
+  * @brief  Returns a value that tells us which Exti lines are pending
+  * @note   None
+  * @param  void
+  * @retval uint32_t - Value of the pending register
+  */
 uint32_t Exti_GetPending(void)
 {
     return (uint32_t)(p_ExtiBase_st->EXTI_PR);
 }
 
+/*
+ * @brief Function handler for EXTI0
+ */
 void EXTI0_IRQHandler(void)
 {
     Exti_ClearPending(EXTI_LINE0);
@@ -382,6 +449,9 @@ void EXTI0_IRQHandler(void)
     }
 }
 
+/*
+ * @brief Function handler for EXTI1
+ */
 void EXTI1_IRQHandler(void)
 {
     Exti_ClearPending(EXTI_LINE1);
@@ -391,6 +461,9 @@ void EXTI1_IRQHandler(void)
     }
 }
 
+/*
+ * @brief Function handler for EXTI2
+ */
 void EXTI2_IRQHandler(void)
 {
     Exti_ClearPending(EXTI_LINE2);
@@ -400,6 +473,9 @@ void EXTI2_IRQHandler(void)
     }
 }
 
+/*
+ * @brief Function handler for EXTI3
+ */
 void EXTI3_IRQHandler(void)
 {
     Exti_ClearPending(EXTI_LINE3);
@@ -409,6 +485,9 @@ void EXTI3_IRQHandler(void)
     }
 }
 
+/*
+ * @brief Function handler for EXTI4
+ */
 void EXTI4_IRQHandler(void)
 {
     Exti_ClearPending(EXTI_LINE4);
@@ -418,10 +497,13 @@ void EXTI4_IRQHandler(void)
     }
 }
 
+/*
+ * @brief Function handler for EXTI5 -> EXTI9
+ */
 void EXTI9_5_IRQHandler(void)
 {
     uint32_t PendValue_u32;
-    Exti_Line_e Line_e;
+    Exti_Line Line_e;
 
     PendValue_u32 = Exti_GetPending();
 
@@ -456,10 +538,13 @@ void EXTI9_5_IRQHandler(void)
     }
 }
 
+/*
+ * @brief Function handler for EXTI5 -> EXTI10
+ */
 void EXTI15_10_IRQHandler(void)
 {
     uint32_t PendValue_u32;
-    Exti_Line_e Line_e;
+    Exti_Line Line_e;
 
     PendValue_u32 = Exti_GetPending();
 
