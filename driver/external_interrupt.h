@@ -57,12 +57,12 @@ typedef enum
 /*
  * @brief Pointer to user's handler function
  */
-typedef void (*FuncHandler)(Exti_Line);
+typedef void (*ExtFuncHandler)(Exti_Line);
 
 /*** PROTOTYPE ****************************/
 
 /* Enable external interrupt */
-ReturnType Exti_IntEnable(Exti_Line LineNum_e, FuncHandler p_Func);
+ReturnType Exti_IntEnable(Exti_Line LineNum_e, ExtFuncHandler p_Func);
 
 /* Disable external interrupt */
 ReturnType Exti_IntDisable(Exti_Line LineNum_e);
@@ -83,7 +83,7 @@ ReturnType Exti_SoftIntGenerate(Exti_Line LineNum_e);
 ReturnType Exti_ClearPending(Exti_Line LineNum_e);
 
 /* Return pending value of external interrupts */
-uint32_t   Exti_GetPending(void);
+uint32   Exti_GetPending(void);
 
 /* Override weak Exti line handlers (0-15) */
 void EXTI0_IRQHandler(void);

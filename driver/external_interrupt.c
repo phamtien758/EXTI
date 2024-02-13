@@ -20,13 +20,13 @@ static Exti_RegDef *p_ExtiBase_st = EXTI;
 /*
  * @brief  Pointer to external interrupt handler
  */
-static FuncHandler p_Handler = NULL;
+static ExtFuncHandler p_Handler = NULL;
 
-/*** PROTOTYPE **********************************/
+/*** PROTOTYPE ****************************************************************/
 
 static ReturnType Exti_CheckLineValid(Exti_Line LineNum_e);
 
-/*** STATIC FUNCTION ****************************/
+/*** STATIC FUNCTION **********************************************************/
 
 /**
   * @brief  Function checks the accuracy of Exti line. Wrong Exti line may cause
@@ -74,7 +74,7 @@ static ReturnType Exti_CheckLineValid(Exti_Line LineNum_e)
     return RetValue;
 }
 
-/*** FUNCTIONS **********************************/
+/*** FUNCTIONS ****************************************************************/
 
 /**
   * @brief  Enable external interrupt
@@ -106,7 +106,7 @@ static ReturnType Exti_CheckLineValid(Exti_Line LineNum_e)
   * @retval RET_OK - Enable successful
   *         RET_NOT_OK - Enable unsuccessful
   */
-ReturnType Exti_IntEnable(Exti_Line LineNum_e, FuncHandler p_Func)
+ReturnType Exti_IntEnable(Exti_Line LineNum_e, ExtFuncHandler p_Func)
 {
     ReturnType RetValue;
     
@@ -430,11 +430,11 @@ ReturnType Exti_SoftIntGenerate(Exti_Line LineNum_e)
   * @brief  Returns a value that tells us which Exti lines are pending
   * @note   None
   * @param  void
-  * @retval uint32_t - Value of the pending register
+  * @retval uint32 - Value of the pending register
   */
-uint32_t Exti_GetPending(void)
+uint32 Exti_GetPending(void)
 {
-    return (uint32_t)(p_ExtiBase_st->EXTI_PR);
+    return (uint32)(p_ExtiBase_st->EXTI_PR);
 }
 
 /*
@@ -502,7 +502,7 @@ void EXTI4_IRQHandler(void)
  */
 void EXTI9_5_IRQHandler(void)
 {
-    uint32_t PendValue_u32;
+    uint32 PendValue_u32;
     Exti_Line Line_e;
 
     PendValue_u32 = Exti_GetPending();
@@ -543,7 +543,7 @@ void EXTI9_5_IRQHandler(void)
  */
 void EXTI15_10_IRQHandler(void)
 {
-    uint32_t PendValue_u32;
+    uint32 PendValue_u32;
     Exti_Line Line_e;
 
     PendValue_u32 = Exti_GetPending();
